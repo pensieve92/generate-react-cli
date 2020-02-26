@@ -6,6 +6,7 @@ const componentJsTemplate = require('../templates/component/componentJsTemplate'
 const componentTsTemplate = require('../templates/component/componentTsTemplate');
 const componentCssTemplate = require('../templates/component/componentCssTemplate');
 const componentLazyTemplate = require('../templates/component/componentLazyTemplate');
+const componentIndexTemplate = require('../templates/component/componentIndexTemplate');
 const componentTsLazyTemplate = require('../templates/component/componentTsLazyTemplate');
 const componentStoryTemplate = require('../templates/component/componentStoryTemplate');
 const componentTestEnzymeTemplate = require('../templates/component/componentTestEnzymeTemplate');
@@ -114,6 +115,18 @@ function getComponentLazyTemplate({ cliConfigFile, componentName, componentPathD
   };
 }
 
+function getComponentIndexTemplate({ cliConfigFile, componentName, componentPathDir }) {
+  const { usesTypeScript } = cliConfigFile;
+  const fileExtension = usesTypeScript ? 'tsx' : 'js';
+
+  return {
+    template: componentIndexTemplate,
+    templateType: `Index "index.${fileExtension}"`,
+    componentPath: `${componentPathDir}/index.${fileExtension}`,
+    componentName,
+  };
+}
+
 // public
 
 // --- Template Types
@@ -123,6 +136,7 @@ const componentTemplateTypes = {
   TEST: 'withTest',
   STORY: 'withStory',
   LAZY: 'withLazy',
+  INDEX: 'withIndex',
   COMPONENT: 'component',
 };
 
@@ -164,6 +178,7 @@ function getComponentTemplate(cmd, cliConfigFile, componentName, templateType) {
     [componentTemplateTypes.TEST]: getComponentTestTemplate,
     [componentTemplateTypes.STORY]: getComponentStoryTemplate,
     [componentTemplateTypes.LAZY]: getComponentLazyTemplate,
+    [componentTemplateTypes.INDEX]: getComponentIndexTemplate,
     [componentTemplateTypes.COMPONENT]: getComponentScriptTemplate,
   };
 

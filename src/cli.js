@@ -22,6 +22,7 @@ module.exports = async function cli(args) {
     .option('--withTest <withTest>', 'With corresponding test file.', component.test.withTest)
     .option('--withStory <withStory>', 'With corresponding story file.', component.withStory)
     .option('--withLazy <withLazy>', 'With corresponding lazy file.', component.withLazy)
+    .option('--withIndex <withIndex>', 'With corresponding index file.', component.withIndex)
 
     .action((componentName, cmd) => generateComponent(cmd, cliConfigFile, componentName))
     .action(() => {

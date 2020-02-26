@@ -59,6 +59,12 @@ const grcConfigQuestions = [
     message:
       'Would you like to create a corresponding lazy file (a file that lazy-loads your component out of the box and enables code splitting: https://reactjs.org/docs/code-splitting.html#code-splitting) with each component you generate?',
   },
+  {
+    type: 'confirm',
+    name: 'component.withIndex',
+    message:
+      'Would you like to create a corresponding index file with each component you generate?',
+  },
 ];
 
 async function createCLIConfigFile() {
