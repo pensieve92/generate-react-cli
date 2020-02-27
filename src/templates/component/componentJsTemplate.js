@@ -1,16 +1,14 @@
 module.exports = `import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './TemplateName.module.css';
+import styles from './TemplateName.scss';
+import classNames from 'classnames/bind';
+
+const cx = classNames.bind(styles);
 
 const TemplateName = () => (
-  <div className={styles.TemplateName} data-testid="TemplateName">
-    TemplateName Component
+  <div className={cx('TemplateName')} >
+    TemplateName
   </div>
 );
-
-TemplateName.propTypes = {};
-
-TemplateName.defaultProps = {};
 
 export default TemplateName;
 `;

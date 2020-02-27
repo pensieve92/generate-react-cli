@@ -1,1 +1,3 @@
-module.exports = `.TemplateName {}`;
+module.exports = `.TemplateName {
+    
+}`;
